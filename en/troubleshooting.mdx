@@ -1,0 +1,70 @@
+---
+title: "Troubleshooting"
+description: "Check sharing, permissions, recognition, sync, and restore when something does not work as expected."
+---
+
+## Galpi is missing from the share sheet
+
+1. Open **Share** in Safari, YouTube, or another app.
+2. Open **More** at the end of the app list.
+3. Use **Edit** to enable Galpi and add it to favorites.
+4. If it is still missing, restart the device and check again.
+
+## Voice or handwriting capture is unavailable
+
+Check microphone, Speech Recognition, Camera, and Photos permissions in the device's **Settings > Apps > Galpi**. Return to Galpi and try capture again after changing a permission.
+
+## Handwriting recognition is inaccurate
+
+- Compare the result with the original image in the thought's detail screen.
+- Exclude background or unrelated writing in the selection editor.
+- Try changing the basic recognition language-correction option.
+- If needed, choose advanced recognition after reviewing its external-transfer notice.
+
+## The audio is saved but there is no transcript
+
+- Play the original from the thought's detail screen to check the saved recording.
+- Check Speech Recognition permission and the recognition language.
+- First use of a language may need an internet connection and storage for its model.
+- Wait if processing is still in progress, or use the retry action when shown.
+- If the device does not support transcription, you can listen to the original and type the body yourself.
+
+## YouTube caption import or translation is not completing
+
+- Check the internet connection.
+- Caption import does not depend on a personal Gemini API key. A video without public captions cannot be imported.
+- Restricted videos or an unavailable relay service can prevent caption import.
+- For Korean or English translation, check the required language model and available storage.
+- Follow any error-specific retry guidance in the app.
+
+## iCloud sync appears stuck
+
+1. Check the device's Apple account and iCloud Drive status.
+2. Read the status and pending counts in **Settings > iCloud sync**.
+3. Request a sync now.
+4. If the issue continues, make a ZIP backup and note the app version and exact status message.
+
+## Restored data has not appeared
+
+After restore preparation completes, fully quit Galpi and reopen it; switching to another app is not enough. If validation failed, choose another backup. A failed validation does not change current data.
+
+## Routine notifications do not arrive
+
+- Check enabled reminders and weekdays in **Settings > Routine**.
+- Allow notifications in the device's **Settings > Notifications > Galpi**.
+- Leave the routine settings screen after changing the time so updated scheduling can be applied.
+- Open Galpi directly to record even when reminders are off.
+
+## Galpi is missing from widgets or controls
+
+Open Galpi once, then return to the widget or Control Center picker. If it is still missing, restart the device and check that the latest Galpi build is installed.
+
+## An imported conversation has no body
+
+The shared page may be inaccessible or its format may have changed. Copy the conversation and use the paste-original action in its Galpi detail screen.
+
+## Keep useful problem details
+
+Note your device model, OS version, Galpi version from **Settings > App information**, exact error message, and the steps that caused it. Check screenshots before sharing so they do not expose private records or API keys.
+
+If records appear missing, check Trash and sync status first and [back up](/en/sync-and-backup) the current data. Deleting the app before checking your backup can remove originals stored only on that device.

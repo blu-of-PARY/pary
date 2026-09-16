@@ -1,0 +1,52 @@
+---
+title: "Data use"
+description: "Understand originals, on-device recognition, optional external features, and deletion."
+---
+
+This page explains how Galpi's features use data, so you can decide which features to enable and what to share.
+
+## Originals and text
+
+Saved voice recordings and handwriting images are kept as originals. Recognized text and your edited body text are separate from those files. Editing text does not overwrite the original audio or image.
+
+Recognition happens after saving the record, so you can still open the saved original if recognition fails. A recording canceled before saving is not a saved original.
+
+## Where processing happens
+
+| Feature | Processing and transfer |
+| --- | --- |
+| Typed records and original storage | Stored on the device. |
+| Voice transcription | Uses Apple's on-device speech recognition. A language model download may be needed. |
+| Basic handwriting recognition | Uses Apple Vision on the device. |
+| Advanced handwriting recognition | Sends images and the recognition language to Gemini. App-provided usage goes through Galpi's relay service and includes an installation identifier for usage accounting. Personal-key requests go directly to Google. |
+| YouTube caption import | Sends a video identifier, language, and installation identifier to Galpi’s relay service to retrieve public captions when requested. A personal API key is not required. |
+| Source translation | Uses Apple's Translation feature and prepares the required language models. |
+| Basic monthly reflection | Uses records on the device. |
+| Detailed monthly reflection | With consent and a request, sends titles, dates, types, and portions of record text through a relay to OpenAI. Original audio and image files themselves are not included. |
+| Personal iCloud sync | When enabled, syncs records and originals to the private iCloud area of your Apple account. |
+
+Link previews, web-page imports, and book and paper search make online requests to the relevant websites or search services. Opening an original or sharing to another app also involves that service's data handling.
+
+## Manage permissions and consent
+
+- Manage microphone, Speech Recognition, Camera, and Photos permissions in the device's **Settings > Apps > Galpi**.
+- Switch back to basic handwriting recognition in Galpi's **Settings > Handwriting recognition**.
+- Withdraw detailed-reflection consent in **Settings > Privacy**.
+- Remove a personal Gemini API key in **Settings > Advanced settings**. Keys are stored in this device's Keychain.
+- Location used for sunrise and sunset is not stored. You can record without location permission.
+
+## Delete or restore
+
+Restore a thought or source from Trash within 30 days. Permanent deletion removes the original and related data and cannot be undone. See [Archive and Trash](/en/manage-library).
+
+Withdrawing detailed-reflection consent is separate from deleting an existing reflection. Use the saved-reflection deletion action in **Settings > Privacy** to remove the stored results. Removing a result from the device does not undo a request already processed by an external service.
+
+Turning off sync does not delete records already on your devices or in iCloud. Manage exported ZIP backups and copies shared to other apps separately in their saved locations.
+
+<Tip>
+You can type, record, capture handwriting, and use basic recognition without enabling external AI features. The app as a whole also includes online source and sync features, so it is not entirely offline.
+</Tip>
+
+## External service data policies
+
+See [OpenAI data controls](https://platform.openai.com/docs/guides/your-data) and the [Gemini API terms](https://ai.google.dev/gemini-api/terms) for retention and data-use conditions. These depend on the service and account configuration.

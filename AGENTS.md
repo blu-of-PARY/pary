@@ -1,33 +1,7 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+# Galpi documentation
 
-# Documentation project instructions
+This repository publishes the Galpi user guide through Mintlify. `docs.json` at the root defines Korean and English navigation. Keep the Korean pages at the root and the matching English pages in `en/`, and update both when product behavior changes. Run Mintlify validation and broken-link checks before publishing.
 
-## About this project
+Document only features verified in the current app. Do not describe proposed features such as automatic book merging, automatic quote extraction, or conversational semantic search as shipped. Explain the difference between on-device recognition and optional external AI features. Do not invent support contacts, legal policy URLs, or an App Store link.
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
-
-## Terminology
-
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
-
-## Style preferences
-
-{/* Add any project-specific style rules below */}
-
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
-
-## Content boundaries
-
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+The visual style follows the native Galpi brand palette. The snail in `assets/brand/galpi-snail.svg` is a copy of the approved Illustrator master; do not redraw or trace it. Preserve the font notices in `assets/fonts/`. Use the handwritten display face for headings and Freesentation for body text. Keep page titles, navigation, and links natural in each language.

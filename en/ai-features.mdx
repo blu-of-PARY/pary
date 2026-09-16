@@ -1,0 +1,48 @@
+---
+title: "Recognition and AI"
+description: "Choose between on-device recognition and optional features that use external services."
+---
+
+Voice transcription and handwriting recognition run after the original has been saved. Their text helps you search and reread; it does not change the original audio or images.
+
+## Basic recognition
+
+- **Voice transcription** uses Apple's on-device speech recognition. Permission and a language model may be needed the first time.
+- **Basic handwriting recognition** uses Apple Vision on the device without a usage limit.
+- Correct recognition text in the thought's detail screen. You can also view the initial recognition result and the original.
+
+## Advanced handwriting recognition
+
+Choose advanced recognition in **Settings > Handwriting recognition**. After you consent to sending handwriting images to Google's Gemini service, the choice applies to newly saved handwriting.
+
+Check app-provided usage in Settings. Galpi can use that allowance first and continue with a connected personal Gemini API key once it is exhausted. Enable the option to use your personal key for advanced recognition if you want to use that key first. Personal-key requests are subject to the provider's usage and billing rules.
+
+Connect, replace, or remove a key in **Settings > Advanced settings > Personal Gemini API key**. It is stored in this device's Keychain and is not displayed again.
+
+## Import YouTube captions
+
+1. Save a YouTube link to Inbox.
+2. Open the source and choose the caption-import action.
+3. Read the imported segments and compare them with the video using their timestamps.
+
+The current caption feature imports publicly available caption tracks. It does not require a personal Gemini API key. The request sends the video identifier, language, and installation identifier to Galpi's relay service. Videos with no public captions or with access restrictions may not be available.
+
+Auto-generated captions can be inaccurate. Compare them with the video and edit what you need. Collapsing a section or changing the reading language within the source screen keeps the import running; leaving the source detail screen cancels an in-progress import.
+
+## Read a source in Korean or English
+
+Use the globe-shaped language menu in source details to choose **Original**, **Korean**, or **English**. After choosing Korean or English, request a body or full-transcript translation. Galpi uses Apple's Translation feature.
+
+If saved captions or a transcript are available, their text is translated. Otherwise, Galpi uses the available title and excerpt. A language model download may be needed before first use. Translation is unavailable if there is no text or it is already in the selected language.
+
+The translation appears separately and does not overwrite the original. Availability depends on the source language and model readiness. Moving to another source does not show the previous source's translation as the new source's content.
+
+## Monthly reflections
+
+Basic monthly reflections use records on the device. A detailed reflection is created only when you request it and consent to external analysis. Titles, dates, record types, and portions of text from the selected month pass through Galpi's relay service to OpenAI. The monthly reflection request does not include the original photo or audio files themselves.
+
+Manage consent and saved detailed reflections in **Settings > Privacy**. Withdrawing consent and deleting saved reflections are separate actions.
+
+<Warning>
+Recognition, transcripts, translations, and reflections can be wrong. Check quotations, names, numbers, and important interpretations against the original. See [Data use](/en/privacy-and-data) for the data flow of each feature.
+</Warning>

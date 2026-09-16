@@ -1,72 +1,131 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "theme": "willow",
+  "name": "갈피 · Galpi",
+  "description": "내 속도로 생각하고 다시 돌아보세요. Think at your own pace and return to what you leave behind.",
+  "logo": "/assets/brand/galpi-snail.svg",
+  "favicon": "/assets/brand/galpi-snail.svg",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#506747",
+    "light": "#A7BB9C",
+    "dark": "#506747"
   },
-  "favicon": "/favicon.svg",
+  "appearance": {
+    "default": "system"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Daegu Dongseongro",
+      "source": "/assets/fonts/DaeguDongseongro-Regular.woff2",
+      "format": "woff2",
+      "weight": 400
+    },
+    "body": {
+      "family": "Freesentation",
+      "source": "/assets/fonts/Freesentation-4Regular.woff2",
+      "format": "woff2",
+      "weight": 400
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "background": {
+    "color": {
+      "light": "#E9E3D6",
+      "dark": "#211E20"
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
   "navigation": {
-    "pages": [
+    "languages": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "language": "ko",
+        "default": true,
+        "groups": [
+          {
+            "group": "처음 사용하기",
+            "pages": [
+              "index",
+              "getting-started",
+              "think-at-your-pace",
+              "home-and-revisit"
+            ]
+          },
+          {
+            "group": "기록하고 모으기",
+            "pages": [
+              "capture-thoughts",
+              "collect-sources",
+              "books-and-quotes",
+              "import-notes-and-conversations",
+              "handwriting-library"
+            ]
+          },
+          {
+            "group": "다시 꺼내 보기",
+            "pages": [
+              "organize-and-search",
+              "routine",
+              "ai-features"
+            ]
+          },
+          {
+            "group": "데이터와 도움말",
+            "pages": [
+              "manage-library",
+              "settings-and-shortcuts",
+              "sync-and-backup",
+              "privacy-and-data",
+              "troubleshooting"
+            ]
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": [
+              "en/index",
+              "en/getting-started",
+              "en/think-at-your-pace",
+              "en/home-and-revisit"
+            ]
+          },
+          {
+            "group": "Capture and collect",
+            "pages": [
+              "en/capture-thoughts",
+              "en/collect-sources",
+              "en/books-and-quotes",
+              "en/import-notes-and-conversations",
+              "en/handwriting-library"
+            ]
+          },
+          {
+            "group": "Return to your thoughts",
+            "pages": [
+              "en/organize-and-search",
+              "en/routine",
+              "en/ai-features"
+            ]
+          },
+          {
+            "group": "Data and help",
+            "pages": [
+              "en/manage-library",
+              "en/settings-and-shortcuts",
+              "en/sync-and-backup",
+              "en/privacy-and-data",
+              "en/troubleshooting"
+            ]
+          }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
   }
 }

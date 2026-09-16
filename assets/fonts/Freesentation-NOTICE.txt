@@ -1,0 +1,28 @@
+Freesentation Font — Notice
+===========================
+
+Bundled version: 1.002
+Copyright © 2024 PT&
+“Freesentation” is a trademark of Lee Juim.
+
+License: SIL Open Font License, Version 1.1
+The complete license is bundled as Freesentation-OFL-1.1.txt.
+
+Official source and license information:
+https://freesentation.blog/freesentation
+
+Credits recorded in the bundled font metadata:
+- Combined and redesigned as Freesentation by Lee Juim, PT&, PTKKUN
+- Latin glyphs from Heebo by Oded Ezer
+- Hangul glyphs from Noto Sans CJK (Source Han Sans) by Jang Soo-young
+  and Kang Joo-yeon, Sandoll Communications
+
+Files bundled by this application (SHA-256):
+- Freesentation-4Regular.ttf
+  4b0c5d555c3fc71c963e3ea8ab2036b615b26f22be684c566a98b95dedb90ae9
+- Freesentation-6SemiBold.ttf
+  4c49127daf852cd87829a570c2aea6472420094e174cb8fcb383b0bdbe5bd3ac
+- Freesentation-7Bold.ttf
+  ec4306ec47dc5614fd7cf0bfd29932cbace54143bf029f49afb1018596bad594
+
+This application bundles the font binaries without modification.

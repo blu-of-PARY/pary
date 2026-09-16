@@ -1,0 +1,426 @@
+@font-face {
+  font-family: Freesentation;
+  src: url("/assets/fonts/Freesentation-7Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Daegu Dongseongro";
+  src: url("/assets/fonts/DaeguDongseongro-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --galpi-bg: #e9e3d6;
+  --galpi-paper: #f4eee2;
+  --galpi-ink: #3b3436;
+  --galpi-green: #7e9871;
+  --galpi-action: #506747;
+  --galpi-line: color-mix(in srgb, var(--galpi-ink) 18%, transparent);
+  --galpi-muted: color-mix(in srgb, var(--galpi-ink) 72%, var(--galpi-paper));
+}
+
+html.dark {
+  --galpi-bg: #211e20;
+  --galpi-paper: #2c282a;
+  --galpi-ink: #f4eee2;
+  --galpi-action: #a7bb9c;
+  --galpi-line: color-mix(in srgb, var(--galpi-ink) 18%, transparent);
+  --galpi-muted: color-mix(in srgb, var(--galpi-ink) 72%, var(--galpi-paper));
+}
+
+html, body, #body-content, #background-color {
+  background: var(--galpi-bg) !important;
+  color: var(--galpi-ink);
+}
+
+#navbar {
+  background: var(--galpi-paper) !important;
+  border-bottom: 1px solid var(--galpi-line);
+  box-shadow: none !important;
+}
+
+img.nav-logo {
+  width: 37px !important;
+  height: 37px !important;
+  object-fit: contain;
+}
+
+#navbar a:has(img.nav-logo) {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  text-decoration: none;
+}
+
+#navbar a:has(img.nav-logo)::after {
+  content: "갈피";
+  color: var(--galpi-ink);
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+#sidebar, #table-of-contents {
+  background: var(--galpi-bg) !important;
+}
+
+#sidebar {
+  border-right: 1px solid var(--galpi-line);
+}
+
+#table-of-contents {
+  border-left: 1px solid var(--galpi-line);
+}
+
+#sidebar-content, #table-of-contents-content {
+  color: var(--galpi-muted);
+}
+
+.sidebar-group-header {
+  gap: .55rem;
+  margin-bottom: .55rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--galpi-line);
+}
+
+.sidebar-group-header::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--galpi-green);
+}
+
+.sidebar-group-header,
+.sidebar-group-header .sidebar-title {
+  color: var(--galpi-ink) !important;
+  font-family: Freesentation, sans-serif !important;
+  font-size: .94rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#sidebar-content li[data-active] {
+  background: color-mix(in srgb, var(--galpi-green) 19%, var(--galpi-paper));
+  border-radius: 12px;
+  color: var(--galpi-ink);
+}
+
+#sidebar-content li[data-active] a {
+  color: var(--galpi-action) !important;
+  font-weight: 700;
+}
+
+#content-area {
+  background: var(--galpi-paper) !important;
+  min-height: calc(100vh - 5rem);
+  border-left: 1px solid var(--galpi-line);
+  border-right: 1px solid var(--galpi-line);
+}
+
+#content {
+  color: var(--galpi-ink);
+}
+
+#page-title, .mdx-content > h2, .mdx-content > h3 {
+  color: var(--galpi-ink) !important;
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif !important;
+  letter-spacing: -.035em;
+}
+
+#page-title {
+  font-weight: 700 !important;
+  font-size: clamp(2.25rem, 3vw, 3.35rem) !important;
+  line-height: 1.13 !important;
+  margin-top: .25rem;
+}
+
+.mdx-content > h2 {
+  font-size: 1.85rem !important;
+  font-weight: 700 !important;
+  line-height: 1.27;
+  padding-top: 1.1rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--galpi-line);
+}
+
+.mdx-content > h3 {
+  font-size: 1.35rem !important;
+  font-weight: 400 !important;
+}
+
+.mdx-content p, .mdx-content li, .mdx-content td {
+  line-height: 1.8;
+}
+
+.mdx-content a:not(.galpi-button) {
+  color: var(--galpi-action);
+  text-underline-offset: .22em;
+}
+
+.mdx-content table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--galpi-line);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.mdx-content th {
+  background: color-mix(in srgb, var(--galpi-green) 16%, var(--galpi-paper));
+  color: var(--galpi-ink);
+}
+
+.mdx-content tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--galpi-bg) 48%, var(--galpi-paper));
+}
+
+.mdx-content .card {
+  background: var(--galpi-paper) !important;
+  border: 1px solid var(--galpi-line) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--galpi-ink) 6%, transparent);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.mdx-content .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 color-mix(in srgb, var(--galpi-ink) 10%, transparent);
+}
+
+[data-component-part="card-icon"] {
+  color: var(--galpi-action) !important;
+}
+
+[data-component-part="card-title"] {
+  color: var(--galpi-ink);
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif;
+  font-size: 1.27rem;
+  font-weight: 400;
+}
+
+.mdx-content [data-callout-type="note"],
+.mdx-content [data-callout-type="tip"] {
+  border-radius: 16px !important;
+  background: color-mix(in srgb, var(--galpi-green) 12%, var(--galpi-paper)) !important;
+  border: 1px solid var(--galpi-line) !important;
+}
+
+.mdx-content [data-callout-type="note"] [data-component-part="callout-content"],
+.mdx-content [data-callout-type="tip"] [data-component-part="callout-content"] {
+  color: var(--galpi-ink) !important;
+}
+
+.mdx-content [data-callout-type="note"] svg,
+.mdx-content [data-callout-type="tip"] svg {
+  color: var(--galpi-action) !important;
+}
+
+#search-bar-entry, #localization-select-trigger {
+  border-radius: 10px;
+}
+
+#assistant-entry, #assistant-entry-mobile {
+  display: none !important;
+}
+
+body > div[role="status"][aria-live="polite"].fixed:has(svg[viewBox="2.28 2.28 7.6 7.6"]) {
+  display: none !important;
+}
+
+toc-item[data-active], toc-item[data-active-deepest] {
+  color: var(--galpi-action) !important;
+}
+
+.galpi-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 158px;
+  align-items: end;
+  gap: 1rem;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  margin: 1.8rem 0 2rem;
+  background: color-mix(in srgb, var(--galpi-green) 12%, var(--galpi-paper));
+  border: 1.5px solid var(--galpi-ink);
+  border-radius: 24px 29px 21px 27px;
+  box-shadow: 6px 7px 0 color-mix(in srgb, var(--galpi-ink) 10%, transparent);
+}
+
+.galpi-hero-kicker, .galpi-section-kicker {
+  display: inline-block;
+  color: var(--galpi-action);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.galpi-hero-title {
+  margin: .65rem 0 .65rem;
+  color: var(--galpi-ink);
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif;
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  letter-spacing: -.045em;
+  line-height: 1.25;
+}
+
+.galpi-hero-copy {
+  max-width: 34rem;
+  margin: 0 0 1.3rem;
+  color: var(--galpi-muted);
+  line-height: 1.7;
+}
+
+.galpi-hero-snail {
+  width: 100%;
+  max-width: 150px;
+  justify-self: center;
+  align-self: end;
+  filter: drop-shadow(2px 3px 0 color-mix(in srgb, var(--galpi-ink) 12%, transparent));
+}
+
+.galpi-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+.galpi-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: .62rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--galpi-action);
+  background: var(--galpi-action);
+  color: var(--galpi-paper) !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: transform .18s ease;
+}
+
+.galpi-button:hover { transform: translateY(-2px); }
+
+.galpi-button-secondary {
+  background: transparent;
+  color: var(--galpi-action) !important;
+}
+
+.galpi-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .7rem;
+  margin: 1rem 0 2rem;
+}
+
+.galpi-flow-item {
+  padding: 1.1rem;
+  border: 1px solid var(--galpi-line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--galpi-bg) 55%, var(--galpi-paper));
+}
+
+.galpi-flow-number {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: .6rem;
+  border-radius: 50%;
+  background: var(--galpi-action);
+  color: var(--galpi-paper);
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.galpi-flow-item strong {
+  display: block;
+  color: var(--galpi-ink);
+  font-size: 1rem;
+}
+
+.galpi-flow-item span:last-child {
+  display: block;
+  margin-top: .2rem;
+  color: var(--galpi-muted);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+.galpi-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.8rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--galpi-line);
+  border-radius: 17px;
+  background: color-mix(in srgb, var(--galpi-green) 12%, var(--galpi-paper));
+}
+
+.galpi-note img {
+  width: 52px;
+  height: 54px;
+  flex: none;
+}
+
+.galpi-note p { margin: 0; }
+
+.galpi-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.galpi-screen {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--galpi-line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--galpi-bg) 50%, var(--galpi-paper));
+}
+
+.galpi-screen strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: var(--galpi-action);
+  font-family: "Daegu Dongseongro", Freesentation, sans-serif;
+  font-size: 1.24rem;
+  font-weight: 400;
+}
+
+.galpi-screen span { display: block; color: var(--galpi-muted); line-height: 1.55; }
+
+.galpi-font-credit {
+  display: block;
+  margin: 2rem 0 0;
+  color: var(--galpi-muted);
+  font-size: .78rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  #content-area { border: 0; }
+  .galpi-hero { display: block; padding: 1.25rem; }
+  .galpi-hero-kicker { max-width: calc(100% - 75px); }
+  .galpi-hero-snail { position: absolute; top: 1.15rem; right: 1rem; width: 65px; }
+  .galpi-hero-title { margin-top: 1.3rem; }
+  .galpi-flow { grid-template-columns: 1fr; }
+  .galpi-flow-item { display: grid; grid-template-columns: 2.1rem 1fr; column-gap: .7rem; align-items: center; }
+  .galpi-flow-number { grid-row: span 2; margin: 0; }
+  .galpi-flow-item span:last-child { grid-column: 2; }
+  .galpi-screen-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mdx-content .card, .galpi-button { transition: none; }
+}
