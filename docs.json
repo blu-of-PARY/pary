@@ -44,6 +44,17 @@
       {
         "language": "ko",
         "default": true,
+        "footer": {
+          "links": [
+            {
+              "header": "도움말",
+              "items": [
+                { "label": "문의하기", "href": "mailto:help@pary.kr" },
+                { "label": "데이터 사용 안내", "href": "/privacy-and-data" }
+              ]
+            }
+          ]
+        },
         "groups": [
           {
             "group": "처음 사용하기",
@@ -79,13 +90,25 @@
               "settings-and-shortcuts",
               "sync-and-backup",
               "privacy-and-data",
-              "troubleshooting"
+              "troubleshooting",
+              "support"
             ]
           }
         ]
       },
       {
         "language": "en",
+        "footer": {
+          "links": [
+            {
+              "header": "Help",
+              "items": [
+                { "label": "Contact us", "href": "mailto:help@pary.kr" },
+                { "label": "Data use", "href": "/en/privacy-and-data" }
+              ]
+            }
+          ]
+        },
         "groups": [
           {
             "group": "Get started",
@@ -121,7 +144,8 @@
               "en/settings-and-shortcuts",
               "en/sync-and-backup",
               "en/privacy-and-data",
-              "en/troubleshooting"
+              "en/troubleshooting",
+              "en/support"
             ]
           }
         ]
