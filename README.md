@@ -1,6 +1,6 @@
 # Galpi · 갈피 Mintlify guide
 
-2026-09-16 기준 한국어 17페이지와 영어 17페이지의 사용자 설명서입니다. 한국어는 루트 경로, 영어는 `en/`의 같은 파일명에 둡니다. `docs.json`의 `navigation.languages`가 언어 선택과 탐색을 구성합니다.
+2026-09-16 기준 한국어 18페이지와 영어 18페이지의 사용자 설명서입니다. 한국어는 루트 경로, 영어는 `en/`의 같은 파일명에 둡니다. `docs.json`의 `navigation.languages`가 언어 선택과 탐색을 구성합니다.
 
 ## 작성 기준
 
@@ -32,7 +32,7 @@
 4. 기능 검증이 끝난 배포 대상 앱의 화면만 필요한 경우 캡처.
 5. 아래 외부 정보를 실제 값으로 채운 뒤 공식 안내 링크 연결.
 
-34개 내비게이션 경로, frontmatter, 내부 링크와 MDX 컴포넌트 짝은 정적 검사에서 통과했습니다. 2026-09-16 현재 Mintlify 실제 빌드와 로컬 렌더링도 확인했습니다.
+36개 내비게이션 경로, frontmatter, 내부 링크와 MDX 컴포넌트 짝은 정적 검사에서 통과했습니다. 2026-09-16 현재 Mintlify 실제 빌드와 로컬 렌더링도 확인했습니다.
 
 ## 배포 연결
 
@@ -60,5 +60,5 @@ Mintlify의 `pary/pary` 프로젝트는 [blu-of-PARY/pary](https://github.com/bl
 - 한국어 17개·영어 17개, 공식 Mintlify 빌드·끊어진 링크 검사 통과.
 - 데스크톱 및 390px 모바일에서 본문, 언어 전환, 시작 페이지 링크 확인.
 - 로컬 미리보기: http://localhost:3100 (공개 배포 주소가 아님).
-- Mintlify 배포 성공: `blu-of-PARY/pary`의 `main`에서 `pary.mintlify.site`에 공개됨. 한국어·영어 첫 화면과 영어 상세 페이지, 밝은·어두운 모드의 표면색을 실제 사이트에서 확인함.
+- Mintlify 배포 성공: `blu-of-PARY/pary`의 `main`에서 `pary.mintlify.site`에 공개됨. 한국어·영어 첫 화면과 영어 상세 페이지, 문의 페이지, 밝은·어두운 모드의 표면색을 실제 사이트에서 확인함.
 - 앱 측 구현·실기기/배포 잔여 항목: `../ThoughtArchiveNative/docs/RELEASE-READINESS-2026-09-16.md`.
