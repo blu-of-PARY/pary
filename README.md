@@ -36,7 +36,7 @@
 
 ## 배포 연결
 
-Mintlify의 `pary/pary` 프로젝트는 [blu-of-PARY/pary](https://github.com/blu-of-PARY/pary) 저장소의 `main` 브랜치 및 루트 `docs.json`에 연결돼 있습니다. 이 폴더의 문서와 자산을 저장소 루트에 동기화한 뒤 푸시하면 배포가 시작됩니다. 대상 주소는 [pary.mintlify.site](https://pary.mintlify.site)이며, 새 문서가 실제로 표시되는지 별도 확인합니다.
+Mintlify의 `pary/pary` 프로젝트는 [blu-of-PARY/pary](https://github.com/blu-of-PARY/pary) 저장소의 `main` 브랜치 및 루트 `docs.json`에 연결돼 있습니다. 이 폴더의 문서와 자산을 저장소 루트에 동기화한 뒤 푸시하면 배포가 시작됩니다. 공개 주소는 [pary.mintlify.site](https://pary.mintlify.site)입니다.
 
 언어 구성은 [공식 국제화 안내](https://www.mintlify.com/docs/guides/internationalization)를 따릅니다. 한국어와 영어는 동일 페이지 경로를 공유하지 않으며, 각 언어의 본문 링크는 해당 언어의 파일을 가리킵니다.
 
@@ -60,5 +60,5 @@ Mintlify의 `pary/pary` 프로젝트는 [blu-of-PARY/pary](https://github.com/bl
 - 한국어 17개·영어 17개, 공식 Mintlify 빌드·끊어진 링크 검사 통과.
 - 데스크톱 및 390px 모바일에서 본문, 언어 전환, 시작 페이지 링크 확인.
 - 로컬 미리보기: http://localhost:3100 (공개 배포 주소가 아님).
-- Mintlify 연결 확인: `blu-of-PARY/pary`의 `main`, 저장소 루트, 대상 `pary.mintlify.site`.
+- Mintlify 배포 성공: `blu-of-PARY/pary`의 `main`에서 `pary.mintlify.site`에 공개됨. 한국어·영어 첫 화면과 영어 상세 페이지, 밝은·어두운 모드의 표면색을 실제 사이트에서 확인함.
 - 앱 측 구현·실기기/배포 잔여 항목: `../ThoughtArchiveNative/docs/RELEASE-READINESS-2026-09-16.md`.
