@@ -44,9 +44,9 @@ codex mcp add galpi-local \
 ### Claude Code
 
 ```sh
-claude mcp add --transport stdio --scope user \
-  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
-  galpi-local -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+claude mcp add --transport stdio --scope user galpi-local \
+  -e GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip -- \
+  "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
 ```
 
 `claude mcp get galpi-local`로 등록을 확인한 뒤 Claude Code의 `/mcp`에서 연결 상태를 봅니다.
@@ -74,5 +74,5 @@ Claude Code 설정과 별개입니다. Mac의 `~/Library/Application Support/Cla
 새 기록을 반영하려면 갈피에서 **새 백업을 내보내고**, 각 연결의 `GALPI_BACKUP_PATH`를 새 ZIP 경로로 바꾸거나 같은 파일 경로의 ZIP을 교체한 뒤 AI 앱을 다시 시작합니다. 이 도구는 백업 시점의 스냅샷이며 실시간 동기화나 의미 검색이 아닙니다. 사진·녹음 원본, 보관·휴지통 항목, 백업에 없는 YouTube 자막 파일은 결과에 포함되지 않습니다.
 
 <Warning>
-AI의 답과 인용은 원본 기록과 대조하세요. 백업 ZIP의 보관·삭제는 사용자가 관리해야 하며, MCP 연결을 지워도 ZIP은 자동 삭제되지 않습니다. 연결을 해제하려면 Codex에서 `codex mcp remove galpi-local`, Claude Code에서 `claude mcp remove galpi-local`을 실행하거나 Claude Desktop 설정에서 해당 항목을 제거하세요. [데이터 사용 안내](/privacy-and-data)도 확인하세요.
+AI의 답과 인용은 원본 기록과 대조하세요. 백업 ZIP의 보관·삭제는 사용자가 관리해야 하며, MCP 연결을 지워도 ZIP은 자동 삭제되지 않습니다. 연결을 해제하려면 Codex에서 `codex mcp remove galpi-local`, Claude Code에서 `claude mcp remove galpi-local -s user`를 실행하거나 Claude Desktop 설정에서 해당 항목을 제거하세요. [데이터 사용 안내](/privacy-and-data)도 확인하세요.
 </Warning>

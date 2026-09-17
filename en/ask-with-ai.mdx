@@ -44,9 +44,9 @@ Check with `codex mcp list`, then restart the app. Codex and the ChatGPT desktop
 ### Claude Code
 
 ```sh
-claude mcp add --transport stdio --scope user \
-  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
-  galpi-local -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+claude mcp add --transport stdio --scope user galpi-local \
+  -e GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip -- \
+  "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
 ```
 
 Check with `claude mcp get galpi-local`, then use `/mcp` in Claude Code to see its connection status.
@@ -74,5 +74,5 @@ Try: “Separate the reading sources I saved in Galpi from the thoughts I wrote 
 To include new records, **export a new backup**, update `GALPI_BACKUP_PATH` in each connection or replace the ZIP at the same path, and restart the AI app. This is a snapshot, not live sync or semantic search. Original photos and audio, archived or trashed items, and YouTube caption files outside the ZIP are not returned.
 
 <Warning>
-Check AI answers and quotations against the original. You manage storage and deletion of the backup ZIP; removing an MCP connection does not delete it. To disconnect, run `codex mcp remove galpi-local` or `claude mcp remove galpi-local`, or remove the entry from Claude Desktop's configuration. See [Data use](/en/privacy-and-data).
+Check AI answers and quotations against the original. You manage storage and deletion of the backup ZIP; removing an MCP connection does not delete it. To disconnect, run `codex mcp remove galpi-local` or `claude mcp remove galpi-local -s user`, or remove the entry from Claude Desktop's configuration. See [Data use](/en/privacy-and-data).
 </Warning>

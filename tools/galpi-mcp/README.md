@@ -25,8 +25,7 @@ codex mcp add galpi-local \
 ```sh
 claude mcp add --transport stdio \
   --scope user \
-  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
-  galpi-local -- \
+  galpi-local -e GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip -- \
   "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
 ```
 
@@ -57,7 +56,7 @@ Claude Code의 설정은 Claude Desktop **채팅** 설정과 별개입니다. ma
 - 자료는 `thoughtarchive://sources/<ID>` 주소로 갈피 앱을 열 수 있습니다. 생각 기록은 현재 앱에 전용 딥링크가 없어 ID로만 인용합니다.
 - 검색은 간단한 단어 포함 방식이며 의미 검색이나 대화형 동기화가 아닙니다. 검색 결과는 일부 문장이고 `get_record`로 세부 내용을 읽습니다. 세부 본문은 20,000자로 제한됩니다.
 
-백업 ZIP과 MCP 등록 환경 변수에 저장된 경로는 본인 컴퓨터에 남습니다. 사용을 중단하려면 `codex mcp remove galpi-local` 또는 `claude mcp remove galpi-local`을 실행합니다. ZIP 삭제 여부는 본인이 결정합니다.
+백업 ZIP과 MCP 등록 환경 변수에 저장된 경로는 본인 컴퓨터에 남습니다. 사용을 중단하려면 `codex mcp remove galpi-local` 또는 `claude mcp remove galpi-local -s user`를 실행합니다. ZIP 삭제 여부는 본인이 결정합니다.
 
 ## 검증
 
