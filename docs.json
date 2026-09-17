@@ -80,7 +80,8 @@
             "pages": [
               "organize-and-search",
               "routine",
-              "ai-features"
+              "ai-features",
+              "ask-with-ai"
             ]
           },
           {
@@ -134,7 +135,8 @@
             "pages": [
               "en/organize-and-search",
               "en/routine",
-              "en/ai-features"
+              "en/ai-features",
+              "en/ask-with-ai"
             ]
           },
           {

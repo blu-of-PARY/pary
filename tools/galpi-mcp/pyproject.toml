@@ -1,0 +1,9 @@
+[project]
+name = "galpi-local-mcp"
+version = "0.1.0"
+description = "Read-only local MCP bridge for a user-exported Galpi backup"
+requires-python = ">=3.10"
+dependencies = ["mcp>=2.0.0,<3"]
+
+[tool.uv]
+package = false

@@ -1,0 +1,78 @@
+---
+title: "GPT·Claude에 내 기록 묻기"
+description: "내보낸 갈피 백업을 Mac의 읽기 전용 도구에 연결해 기록과 자료를 함께 찾아봅니다."
+---
+
+갈피의 생각과 저장한 자료를 GPT·Claude에서 함께 찾아볼 수 있는 **고급 사용자용 로컬 실험판**입니다. 갈피 앱에 AI 채팅 기능이 생기는 것은 아닙니다. Mac에서 별도 MCP 도구를 설치하고, 본인이 내보낸 백업 ZIP을 지정합니다. 새로 기록한 내용이 자동으로 동기화되지는 않습니다.
+
+<Note>
+이 기능은 현재 Codex·ChatGPT 데스크톱 앱, Claude Code, Claude Desktop의 로컬 설정을 위한 안내입니다. ChatGPT 웹과 Claude 웹의 원격 커넥터에는 이 로컬 도구를 직접 연결할 수 없습니다.
+</Note>
+
+## 1. 갈피에서 백업 만들기
+
+1. iPhone의 **갈피 > 설정 > 백업·복원 > 내보내기**에서 새 ZIP을 만듭니다.
+2. 공유 화면에서 Mac의 본인만 접근하는 폴더에 저장합니다. [백업 내보내기 자세히 보기](/sync-and-backup#백업-내보내기).
+3. ZIP 파일의 절대경로를 확인합니다. 아래 예시의 `/absolute/path/to/GalpiBackup.zip`을 그 경로로 바꿉니다.
+
+ZIP 원본에는 사진·녹음과 설정 등도 들어 있습니다. MCP 도구는 그중 활성 생각의 글, 저장 자료의 제목·발췌·메모·URL, 둘 사이의 연결만 **읽기 전용으로** 제공합니다. ZIP을 AI 서비스에 통째로 업로드하지 않습니다. 다만 질문에 맞춰 AI가 도구를 호출하면 **반환된 텍스트는 이용 중인 AI 서비스에 전달될 수 있습니다**.
+
+## 2. Mac에 로컬 도구 설치하기
+
+터미널과 Python 3.10 이상, [`uv`](https://docs.astral.sh/uv/)가 필요합니다. [갈피 MCP 도구의 소스와 자세한 안내](https://github.com/blu-of-PARY/pary/tree/main/tools/galpi-mcp)를 확인한 다음 터미널에서 다음을 실행합니다.
+
+```sh
+git clone https://github.com/blu-of-PARY/pary.git
+cd pary/tools/galpi-mcp
+uv sync --locked
+```
+
+이미 저장소를 받아 두었다면 새로 복제하지 않고 해당 `tools/galpi-mcp` 폴더로 이동해 `uv sync --locked`를 실행합니다. 아래 명령은 **그 폴더 안에서** 실행해야 합니다.
+
+## 3. 사용할 앱에 연결하기
+
+### Codex와 ChatGPT 데스크톱 앱
+
+```sh
+codex mcp add galpi-local \
+  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
+  -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+```
+
+`codex mcp list`로 등록을 확인하고 앱을 다시 시작합니다. 같은 Mac의 Codex와 ChatGPT 데스크톱 앱은 이 MCP 구성을 공유합니다.
+
+### Claude Code
+
+```sh
+claude mcp add --transport stdio --scope user \
+  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
+  galpi-local -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+```
+
+`claude mcp get galpi-local`로 등록을 확인한 뒤 Claude Code의 `/mcp`에서 연결 상태를 봅니다.
+
+### Claude Desktop의 채팅 화면
+
+Claude Code 설정과 별개입니다. Mac의 `~/Library/Application Support/Claude/claude_desktop_config.json`에서 기존 `mcpServers` 객체 **안에** 다음 항목을 추가하고 Claude Desktop을 완전히 종료했다가 다시 엽니다. 설정 파일 전체를 예시로 덮어쓰지 마세요. 세 경로를 모두 이 Mac의 절대경로로 바꿉니다.
+
+```json
+{
+  "mcpServers": {
+    "galpi-local": {
+      "command": "/absolute/path/to/pary/tools/galpi-mcp/.venv/bin/python",
+      "args": ["/absolute/path/to/pary/tools/galpi-mcp/server.py"],
+      "env": {"GALPI_BACKUP_PATH": "/absolute/path/to/GalpiBackup.zip"}
+    }
+  }
+}
+```
+
+## 질문과 갱신
+
+연결 후에는 “갈피에서 최근 독서 자료와 내가 직접 남긴 생각을 구분해 정리하고, 근거가 된 기록 ID를 알려 줘”처럼 물어보세요. 도구는 검색, 기록 본문 읽기, 최근 기록 조회, 백업 시각·건수 확인을 제공합니다. 자료는 갈피 앱으로 돌아가는 링크가 있을 수 있지만 생각 기록은 현재 ID로 확인합니다.
+
+새 기록을 반영하려면 갈피에서 **새 백업을 내보내고**, 각 연결의 `GALPI_BACKUP_PATH`를 새 ZIP 경로로 바꾸거나 같은 파일 경로의 ZIP을 교체한 뒤 AI 앱을 다시 시작합니다. 이 도구는 백업 시점의 스냅샷이며 실시간 동기화나 의미 검색이 아닙니다. 사진·녹음 원본, 보관·휴지통 항목, 백업에 없는 YouTube 자막 파일은 결과에 포함되지 않습니다.
+
+<Warning>
+AI의 답과 인용은 원본 기록과 대조하세요. 백업 ZIP의 보관·삭제는 사용자가 관리해야 하며, MCP 연결을 지워도 ZIP은 자동 삭제되지 않습니다. 연결을 해제하려면 Codex에서 `codex mcp remove galpi-local`, Claude Code에서 `claude mcp remove galpi-local`을 실행하거나 Claude Desktop 설정에서 해당 항목을 제거하세요. [데이터 사용 안내](/privacy-and-data)도 확인하세요.
+</Warning>

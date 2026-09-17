@@ -1,0 +1,78 @@
+---
+title: "Ask GPT or Claude about your archive"
+description: "Connect an exported Galpi backup to a read-only local tool on your Mac."
+---
+
+This is an **experimental local option for advanced users** to search your Galpi thoughts and saved sources from GPT or Claude. It does not add a chat screen to the Galpi app. You install a separate MCP tool on a Mac and point it to a backup ZIP that you exported. New records do not sync automatically.
+
+<Note>
+These instructions cover local connections in Codex and the ChatGPT desktop app, Claude Code, and Claude Desktop. A local tool cannot be connected directly to the remote connectors in ChatGPT on the web or Claude on the web.
+</Note>
+
+## 1. Export your Galpi backup
+
+1. On your iPhone, choose **Galpi > Settings > Backup and restore > Export** to create a fresh ZIP.
+2. Save it in a private folder on your Mac using the share sheet. See [Export a backup](/en/sync-and-backup#export-a-backup).
+3. Find its absolute file path. Replace `/absolute/path/to/GalpiBackup.zip` in the examples below with that path.
+
+The original ZIP also contains photos, recordings, settings, and other data. The MCP tool exposes only active thought text, saved source titles, excerpts, notes and URLs, and links between thoughts and sources. It never edits the ZIP or uploads the whole ZIP to an AI service. **Text returned by a tool call may be sent to the AI service you are using.**
+
+## 2. Install the local tool on a Mac
+
+You need a terminal, Python 3.10 or later, and [`uv`](https://docs.astral.sh/uv/). Review the [Galpi MCP source and detailed setup](https://github.com/blu-of-PARY/pary/tree/main/tools/galpi-mcp), then run:
+
+```sh
+git clone https://github.com/blu-of-PARY/pary.git
+cd pary/tools/galpi-mcp
+uv sync --locked
+```
+
+If you already cloned the repository, go to its `tools/galpi-mcp` folder and run `uv sync --locked` there. Run the commands below **from that folder**.
+
+## 3. Connect your AI app
+
+### Codex and the ChatGPT desktop app
+
+```sh
+codex mcp add galpi-local \
+  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
+  -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+```
+
+Check with `codex mcp list`, then restart the app. Codex and the ChatGPT desktop app on the same Mac share this MCP configuration.
+
+### Claude Code
+
+```sh
+claude mcp add --transport stdio --scope user \
+  --env GALPI_BACKUP_PATH=/absolute/path/to/GalpiBackup.zip \
+  galpi-local -- "$(pwd)/.venv/bin/python" "$(pwd)/server.py"
+```
+
+Check with `claude mcp get galpi-local`, then use `/mcp` in Claude Code to see its connection status.
+
+### Claude Desktop chat
+
+Claude Desktop chat has a separate configuration from Claude Code. On a Mac, add this entry **inside the existing `mcpServers` object** in `~/Library/Application Support/Claude/claude_desktop_config.json`, then fully quit and reopen Claude Desktop. Do not overwrite the whole file with this example. Replace all three paths with absolute paths on your Mac.
+
+```json
+{
+  "mcpServers": {
+    "galpi-local": {
+      "command": "/absolute/path/to/pary/tools/galpi-mcp/.venv/bin/python",
+      "args": ["/absolute/path/to/pary/tools/galpi-mcp/server.py"],
+      "env": {"GALPI_BACKUP_PATH": "/absolute/path/to/GalpiBackup.zip"}
+    }
+  }
+}
+```
+
+## Ask and refresh
+
+Try: “Separate the reading sources I saved in Galpi from the thoughts I wrote myself, and cite the record IDs behind recurring themes.” The tools can search, read a record, list recent records, and show the backup date and counts. A saved source may have a link back into Galpi; thoughts currently use their record IDs.
+
+To include new records, **export a new backup**, update `GALPI_BACKUP_PATH` in each connection or replace the ZIP at the same path, and restart the AI app. This is a snapshot, not live sync or semantic search. Original photos and audio, archived or trashed items, and YouTube caption files outside the ZIP are not returned.
+
+<Warning>
+Check AI answers and quotations against the original. You manage storage and deletion of the backup ZIP; removing an MCP connection does not delete it. To disconnect, run `codex mcp remove galpi-local` or `claude mcp remove galpi-local`, or remove the entry from Claude Desktop's configuration. See [Data use](/en/privacy-and-data).
+</Warning>
